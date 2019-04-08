@@ -39,7 +39,8 @@ if (os.platform() === 'linux') {
 }
 
 const fs = require('fs');
-fs.writeFileSync('debug.sh', `node --inspect=${ip}:9229 index.js`, {
+fs.writeFileSync('debug.sh', `#!/bin/bash
+node --inspect=${ip}:9229 index.js`, {
 	encoding : 'utf-8',
 	mode : 0o777,
 	flag : 'w'
