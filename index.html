@@ -1,0 +1,61 @@
+<!doctype html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0,minimum-scale=1.0,user-scalable=0" />
+		<title>Log</title>
+		<style>
+			.command {
+				background-color : black;
+				color : yellow;
+				padding : 10px;
+			}
+		</style>
+		<script>
+		</script>
+	</head>
+	<body>
+		<article>
+			<header>
+				
+			</header>
+			<section>
+				<h2>create pem files</h2>
+				<p>
+					create the private key pem file
+				</p>
+				<p class="command">
+					openssl genrsa -out private_key.pem 2048
+				</p>
+				<p>
+					create self signature certificate signing request pem file
+				</p>
+				<p class="command">
+					openssl req -new -key private_key.pem -out csr.pem
+				</p>
+				<p>
+					create certificate pem file by self signature
+				</p>
+				<p class="command">
+					openssl x509 -req -in csr.pem -signkey private_key.pem -out certificate.pem
+				</p>
+			</section>
+			<section>
+				<h2>write debug.js for use one command start server with remote debug</h2>
+				<p>
+					write debug.js, in debug.js get local ip and write command to debug.sh file
+					<br/>
+					in package.json file "scripts" property add sub property "start" : "node debug.js | ./debug.sh"
+					<br/>
+					write ".gitignore" file, add content debug.sh, set git don't upload debug.sh file
+					<br/>
+					in chrome browser, at the address bar input
+					<br/>
+					chrome://inspect
+					<br/>
+					to debug
+				</p>
+			</section>
+		</article>
+	</body>
+</html>
