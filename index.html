@@ -57,6 +57,12 @@
 				</p>
 			</section>
 			<section>
+				<h2>同一端口同时支持http于https</h2>
+				<div>
+					http与https在OSI的7层模型中处与应用层, 用处与传输层的net.socket来代理即可, 即由net.socket来监听链接, 将信息分类后转发给相应的http或https服务端口, 再将返回结果由net.socket返回
+				</div>
+			</section>
+			<section>
 				<h2>证书认证</h2>
 				<div>
 					<a target="_blank" href="https://letsencrypt.org/">Let's Encrypt - Free SSL/TLS Certificates</a>
